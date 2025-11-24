@@ -1,0 +1,114 @@
+/* App.css - animations + layout */
+
+:root{
+  --bg:#0f1724;
+  --card:#10233a;
+  --accent:#ffb86b;
+  --green:#48c774;
+  --red:#ff6b6b;
+  --muted:#9aa7b2;
+  --glass: rgba(255,255,255,0.04);
+}
+
+body {
+  background: radial-gradient(circle at 10% 10%, rgba(255,200,120,0.03), transparent 10%),
+              linear-gradient(180deg, #061226 0%, #081428 100%);
+  color: #e6eef6;
+  font-family: Inter, "Segoe UI", Roboto, sans-serif;
+  padding: 24px;
+}
+
+/* container */
+.game-wrap{
+  max-width: 980px;
+  margin: 8px auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 30px rgba(2,6,23,0.7);
+}
+
+/* header */
+.game-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+.game-header h1{ margin:0; font-size:1.4rem; letter-spacing:0.6px;}
+.muted{ color: var(--muted); margin:6px 0 0 0; font-size:0.95rem;}
+.right{ display:flex; gap:12px; align-items:center;}
+.stat{ font-size:0.95rem; display:flex; gap:8px; align-items:center;}
+.badge{ background:var(--glass); padding:6px 10px; border-radius:12px; font-weight:600; color: #dff; }
+
+/* bubbles grid */
+.bubbles-grid{
+  display:grid;
+  gap:14px;
+  justify-content:center;
+  margin:18px 0;
+}
+/* responsive columns based on difficulty (css classes applied .cols-5 etc) */
+.cols-5{ grid-template-columns: repeat(5, minmax(80px, 1fr)); }
+.cols-7{ grid-template-columns: repeat(7, minmax(70px, 1fr)); }
+.cols-10{ grid-template-columns: repeat(10, minmax(60px, 1fr)); }
+
+/* bubble buttons */
+.bubble{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  padding: 12px;
+  border-radius: 999px;
+  min-height:72px;
+  min-width:72px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  transition: transform 180ms ease, box-shadow 200ms ease, background 180ms ease;
+  position:relative;
+  overflow:hidden;
+  color:#eaf6ff;
+  font-weight:600;
+  box-shadow: 0 6px 18px rgba(2,8,20,0.6);
+  animation: float 4s ease-in-out infinite;
+  will-change: transform;
+  outline: none;
+}
+.bubble .label{ font-size:0.78rem; color:var(--muted); margin-bottom:6px; }
+.bubble .value{ font-size:1.05rem; }
+
+/* idle pulsing */
+.bubble.idle{
+  animation: float 4s ease-in-out infinite, pulse 2.6s infinite;
+}
+
+/* correct/wrong styling */
+.bubble.correct{
+  background: linear-gradient(180deg, rgba(72,199,116,0.15), rgba(72,199,116,0.06));
+  border: 1px solid rgba(72,199,116,0.25);
+  transform: scale(1.06);
+}
+.bubble.wrong{
+  background: linear-gradient(180deg, rgba(255,107,107,0.12), rgba(255,107,107,0.06));
+  border: 1px solid rgba(255,107,107,0.25);
+  transform: scale(0.98) rotate(-4deg);
+  animation: shake 360ms linear;
+}
+.bubble:disabled{ cursor: not-allowed; opacity: 0.95; }
+
+/* pop animation for active press */
+.bubble:active{ transform: scale(0.95); }
+
+/* footer */
+.footer{ display:flex; justify-content:space-between; align-items:center; margin-top:12px; }
+.status{ font-weight:800; padding:8px 14px; border-radius:10px; }
+.status.win{ background: linear-gradient(90deg, rgba(72,199,116,0.16), rgba(72,199,116,0.06)); color: #c6f7d1; border: 1px solid rgba(72,199,116,0.2); }
+.status.lost{ background: linear-gradient(90deg, rgba(255,107,107,0.12), rgba(255,107,107,0.06)); color: #ffd8d8; border: 1px solid rgba(255,107,107,0.18); }
+
+.controls{ display:flex; gap:10px; }
+button.primary, button.secondary {
+  padding:8px 12px; border-radius:8px; border: none; cursor: pointer; font-weight:700;
+}
+button.primary{ background: linear-gradient(90deg, #ffb86b, #ff9a5b); colo
