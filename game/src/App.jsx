@@ -1,5 +1,5 @@
 import React from 'react'
-import Display from './Display.jsx';
+import Display from './Display';
 
 function App(){
 
