@@ -111,4 +111,5 @@ body {
 button.primary, button.secondary {
   padding:8px 12px; border-radius:8px; border: none; cursor: pointer; font-weight:700;
 }
-button.primary{ background: linear-gradient(90deg, #ffb86b, #ff9a5b); colo
+button.primary{ background: linear-gradient(90deg, #ffb86b, #ff9a5b); 
+}
